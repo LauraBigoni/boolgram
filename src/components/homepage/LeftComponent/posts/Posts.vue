@@ -1,6 +1,6 @@
 <template>
 	<div class="posts">
-		<Post></Post>
+		<Post v-for="(story, index) in 5" :key="index"></Post>
 	</div>
 </template>
 
@@ -13,5 +13,15 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.posts {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 24px;
+}
+
+.posts > * {
+	margin-bottom: 16px;
+}
 </style>

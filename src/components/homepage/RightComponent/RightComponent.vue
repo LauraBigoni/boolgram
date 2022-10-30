@@ -22,5 +22,6 @@ export default {
 .right-component {
 	display: flex;
 	flex-direction: column;
+	height: calc(100vh - 61px);
 }
 </style>

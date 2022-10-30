@@ -1,9 +1,5 @@
 <template>
 	<div id="app">
-		<!-- ICONS:
-		<font-awesome-icon icon="fa-regular fa-comment" />
-		<font-awesome-icon icon="fa-regular fa-heart" />
-		<font-awesome-icon icon="fa-solid fa-heart" /> -->
 		<Nav :userImage="user.profileImage"></Nav>
 		<main class="components container">
 			<LeftComponent></LeftComponent>
@@ -20,15 +16,15 @@ import LeftComponent from "@/components/homepage/LeftComponent/LeftComponent";
 export default {
 	name: "App",
 	components: { Nav, RightComponent, LeftComponent },
-	data () {
+	data() {
 		return {
 			user: {
 				profileImage: require("@/assets/profile.jpg"),
 				name: "Laura Bigoni",
-				nick: "LauraWebDev"
-			}
-		}
-	}
+				nick: "LauraWebDev",
+			},
+		};
+	},
 };
 </script>
 
@@ -42,6 +38,27 @@ export default {
 	font-family: "Montserrat", sans-serif;
 	font-weight: 400;
 }
+
+/* width */
+::-webkit-scrollbar {
+	width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: rgb(214, 214, 214);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+
 
 #app {
 	height: 100vh;
@@ -70,5 +87,13 @@ export default {
 	border-radius: 50%;
 }
 
+a {
+	text-decoration: none;
+	color: inherit;
+}
 
+a:focus,
+a:active {
+	font-weight: 600;
+}
 </style>

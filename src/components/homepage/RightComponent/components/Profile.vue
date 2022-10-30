@@ -20,26 +20,21 @@ export default {
 
 <style scoped>
 .profile {
-	padding: 10px 0;
+	padding: 10px 16px;
 }
 
 .profile-card {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	max-width: 235px;
+}
+
+.profile-card > div {
+	padding: 0 16px;
 }
 
 .user-nick {
-	font-weight: 600;
-}
-
-a {
-	text-decoration: none;
-	color: inherit;
-}
-
-a:focus,
-a:active {
 	font-weight: 600;
 }
 </style>

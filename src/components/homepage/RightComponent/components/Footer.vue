@@ -17,7 +17,7 @@ export default {
 
 <style scoped>
 .footer {
-	flex-shrink: 1;
+	padding: 0 16px;
 }
 
 .copyright {
