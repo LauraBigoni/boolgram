@@ -8,6 +8,7 @@
 					name="searchbar"
 					id="searchbar"
 					placeholder="Cerca"
+					v-model="searchText"
 				/>
 				<label for="searchbar"></label>
 			</div>
@@ -27,6 +28,7 @@ export default {
 		return {
 			logo: require("@/assets/logo.png"),
 			profileImage: require("@/assets/profile.jpg"),
+			searchText: "",
 		};
 	},
 };
@@ -37,7 +39,8 @@ export default {
 	border-bottom: 1px solid rgb(201, 201, 201);
 }
 
-.fa-heart, .fa-house {
+.fa-heart,
+.fa-house {
 	cursor: pointer;
 }
 
