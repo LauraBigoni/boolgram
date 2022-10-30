@@ -1,11 +1,17 @@
 <template>
 	<div class="posts">
 		<Post
-			v-for="(story, index) in posts"
+			v-for="(story, index) in posts.slice(0, this.slice)"
 			:key="index"
 			:index="index"
 			:posts="posts"
 		></Post>
+		<a
+			class="btn-more"
+			@click="showMorePosts()"
+			v-if="this.slice < this.posts.length"
+			>Mostra Altri Post</a
+		>
 	</div>
 </template>
 
@@ -19,6 +25,7 @@ export default {
 	data() {
 		return {
 			posts: [],
+			slice: 2,
 		};
 	},
 	methods: {
@@ -27,6 +34,9 @@ export default {
 				.get("https://flynn.boolean.careers/exercises/api/boolgram/posts")
 				.then((res) => (this.posts = res.data));
 			console.log(this.posts);
+		},
+		showMorePosts() {
+			this.slice += 2;
 		},
 	},
 	mounted() {
@@ -45,5 +55,15 @@ export default {
 
 .posts > * {
 	margin-bottom: 16px;
+}
+
+.btn-more {
+	padding: 10px 15px;
+	background-color: dodgerblue;
+	width: max-content;
+	color: #fff;
+	border-radius: 8px;
+	align-self: center;
+	cursor: pointer;
 }
 </style>
