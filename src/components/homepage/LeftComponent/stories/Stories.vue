@@ -1,6 +1,11 @@
 <template>
 	<div class="stories">
-		<Story v-for="(story, index) in 5" :key="index"></Story>
+		<Story
+			v-for="(story, index) in stories"
+			:key="index"
+			:index="index"
+			:stories="stories"
+		></Story>
 	</div>
 </template>
 
@@ -9,7 +14,13 @@ import Story from "@/components/homepage/LeftComponent/stories/Story";
 
 export default {
 	name: "StoriesComponent",
+	props: ["stories"],
 	components: { Story },
+	data() {
+		return {};
+	},
+	methods: {},
+	mounted() {},
 };
 </script>
 
@@ -18,7 +29,7 @@ export default {
 	display: flex;
 	justify-content: center;
 	gap: 16px;
-	background-color: rgb(247,247,247);
+	background-color: rgb(247, 247, 247);
 	border: 1px solid rgb(201, 201, 201);
 	border-radius: 4px;
 	margin: 24px;

@@ -7,124 +7,18 @@
 		<div class="suggestion-box">
 			<!-- fare chiamata api sostituire dati fake -->
 			<div class="scroll">
-				<div class="suggestion-card">
+				<div
+					class="suggestion-card"
+					v-for="(sugg, index) in stories"
+					:key="index"
+				>
 					<div>
 						<img
 							class="profile-img"
-							src="https://us.123rf.com/450wm/lyudmila2609/lyudmila26092106/lyudmila2609210600064/170142240-ragazza-anime-con-gli-occhi-verdi-nel-cappuccio.jpg"
+							:src="sugg.profile_picture"
 							alt="user-image"
 						/>
-						<h4 class="user-nick">Nickname</h4>
-					</div>
-					<a href="#">Segui</a>
-				</div>
-				<div class="suggestion-card">
-					<div>
-						<img
-							class="profile-img"
-							src="https://us.123rf.com/450wm/lyudmila2609/lyudmila26092106/lyudmila2609210600064/170142240-ragazza-anime-con-gli-occhi-verdi-nel-cappuccio.jpg"
-							alt="user-image"
-						/>
-						<h4 class="user-nick">Nickname</h4>
-					</div>
-					<a href="#">Segui</a>
-				</div>
-				<div class="suggestion-card">
-					<div>
-						<img
-							class="profile-img"
-							src="https://us.123rf.com/450wm/lyudmila2609/lyudmila26092106/lyudmila2609210600064/170142240-ragazza-anime-con-gli-occhi-verdi-nel-cappuccio.jpg"
-							alt="user-image"
-						/>
-						<h4 class="user-nick">Nickname</h4>
-					</div>
-					<a href="#">Segui</a>
-				</div>
-				<div class="suggestion-card">
-					<div>
-						<img
-							class="profile-img"
-							src="https://us.123rf.com/450wm/lyudmila2609/lyudmila26092106/lyudmila2609210600064/170142240-ragazza-anime-con-gli-occhi-verdi-nel-cappuccio.jpg"
-							alt="user-image"
-						/>
-						<h4 class="user-nick">Nickname</h4>
-					</div>
-					<a href="#">Segui</a>
-				</div>
-				<div class="suggestion-card">
-					<div>
-						<img
-							class="profile-img"
-							src="https://us.123rf.com/450wm/lyudmila2609/lyudmila26092106/lyudmila2609210600064/170142240-ragazza-anime-con-gli-occhi-verdi-nel-cappuccio.jpg"
-							alt="user-image"
-						/>
-						<h4 class="user-nick">Nickname</h4>
-					</div>
-					<a href="#">Segui</a>
-				</div>
-				<div class="suggestion-card">
-					<div>
-						<img
-							class="profile-img"
-							src="https://us.123rf.com/450wm/lyudmila2609/lyudmila26092106/lyudmila2609210600064/170142240-ragazza-anime-con-gli-occhi-verdi-nel-cappuccio.jpg"
-							alt="user-image"
-						/>
-						<h4 class="user-nick">Nickname</h4>
-					</div>
-					<a href="#">Segui</a>
-				</div>
-				<div class="suggestion-card">
-					<div>
-						<img
-							class="profile-img"
-							src="https://us.123rf.com/450wm/lyudmila2609/lyudmila26092106/lyudmila2609210600064/170142240-ragazza-anime-con-gli-occhi-verdi-nel-cappuccio.jpg"
-							alt="user-image"
-						/>
-						<h4 class="user-nick">Nickname</h4>
-					</div>
-					<a href="#">Segui</a>
-				</div>
-				<div class="suggestion-card">
-					<div>
-						<img
-							class="profile-img"
-							src="https://us.123rf.com/450wm/lyudmila2609/lyudmila26092106/lyudmila2609210600064/170142240-ragazza-anime-con-gli-occhi-verdi-nel-cappuccio.jpg"
-							alt="user-image"
-						/>
-						<h4 class="user-nick">Nickname</h4>
-					</div>
-					<a href="#">Segui</a>
-				</div>
-				<div class="suggestion-card">
-					<div>
-						<img
-							class="profile-img"
-							src="https://us.123rf.com/450wm/lyudmila2609/lyudmila26092106/lyudmila2609210600064/170142240-ragazza-anime-con-gli-occhi-verdi-nel-cappuccio.jpg"
-							alt="user-image"
-						/>
-						<h4 class="user-nick">Nickname</h4>
-					</div>
-					<a href="#">Segui</a>
-				</div>
-				<div class="suggestion-card">
-					<div>
-						<img
-							class="profile-img"
-							src="https://us.123rf.com/450wm/lyudmila2609/lyudmila26092106/lyudmila2609210600064/170142240-ragazza-anime-con-gli-occhi-verdi-nel-cappuccio.jpg"
-							alt="user-image"
-						/>
-						<h4 class="user-nick">Nickname</h4>
-					</div>
-					<a href="#">Segui</a>
-				</div>
-				<div class="suggestion-card">
-					<div>
-						<img
-							class="profile-img"
-							src="https://us.123rf.com/450wm/lyudmila2609/lyudmila26092106/lyudmila2609210600064/170142240-ragazza-anime-con-gli-occhi-verdi-nel-cappuccio.jpg"
-							alt="user-image"
-						/>
-						<h4 class="user-nick">Nickname</h4>
+						<h4 class="user-nick">{{ sugg.profile_name }}</h4>
 					</div>
 					<a href="#">Segui</a>
 				</div>
@@ -136,12 +30,17 @@
 <script>
 export default {
 	name: "SuggestionComponent",
+	props: ["stories"],
 };
 </script>
 
 <style scoped>
 .suggestion {
 	padding: 0 16px;
+}
+
+.profile-img {
+	cursor: pointer;
 }
 
 .for-you {

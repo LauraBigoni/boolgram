@@ -2,8 +2,8 @@
 	<div id="app">
 		<Nav :userImage="user.profileImage"></Nav>
 		<main class="components container">
-			<LeftComponent></LeftComponent>
-			<RightComponent :user="user"></RightComponent>
+			<LeftComponent :stories="stories"></LeftComponent>
+			<RightComponent :stories="stories" :user="user"></RightComponent>
 		</main>
 	</div>
 </template>
@@ -12,18 +12,32 @@
 import Nav from "@/components/Nav";
 import RightComponent from "@/components/homepage/RightComponent/RightComponent";
 import LeftComponent from "@/components/homepage/LeftComponent/LeftComponent";
+import axios from "axios";
 
 export default {
 	name: "App",
 	components: { Nav, RightComponent, LeftComponent },
 	data() {
 		return {
+			stories: [],
 			user: {
 				profileImage: require("@/assets/profile.jpg"),
 				name: "Laura Bigoni",
 				nick: "LauraWebDev",
 			},
 		};
+	},
+	methods: {
+		async getStories() {
+			await axios
+				.get("https://flynn.boolean.careers/exercises/api/boolgram/profiles")
+				.then((res) => (this.stories = res.data));
+
+			console.log(this.stories);
+		},
+	},
+	mounted() {
+		this.getStories();
 	},
 };
 </script>
@@ -59,7 +73,6 @@ export default {
 	background: #555;
 }
 
-
 #app {
 	height: 100vh;
 }
@@ -83,7 +96,7 @@ export default {
 
 .profile-img {
 	width: 50px;
-	height: auto;
+	height: 50px;
 	border-radius: 50%;
 }
 

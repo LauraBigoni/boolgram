@@ -4,20 +4,16 @@
 			<div class="user-post-info">
 				<img
 					class="profile-img"
-					src="https://w0.peakpx.com/wallpaper/331/150/HD-wallpaper-sad-boy-hotaro-art-cartoon-sadboy-dark-hotarooreki-feeling-anime-thumbnail.jpg"
+					:src="posts[index].profile_picture"
 					alt="user image"
 				/>
-				<h4 class="user-nick">Laura</h4>
+				<h4 class="user-nick">{{ posts[index].profile_name }}</h4>
 			</div>
 			<div class="dots">
 				<div class="dot" v-for="(dot, index) in 3" :key="index"></div>
 			</div>
 		</div>
-		<img
-			class="post-img"
-			src="https://3.bp.blogspot.com/-g31_rqzTK6Y/XIkaFZH8zNI/AAAAAAAAAgo/TxT0I8EQ4asm0D39LHwDPVOof7FiyeSVACKgBGAs/w2560-h1440-c/sky-city-scenery-horizon-landscape-anime-uhdpaper.com-8K-131.jpg"
-			alt="post image"
-		/>
+		<img class="post-img" :src="posts[index].post_image" alt="post image" />
 		<div class="post-info">
 			<div class="actions">
 				<font-awesome-icon icon="fa-regular fa-heart" size="lg" />
@@ -35,14 +31,12 @@
 			</div>
 			<div class="comment-box">
 				<h5>Mostra tutti e 4 commenti</h5>
-				<div class="comment">
-					<p>User <span> Commento prova</span></p>
-				</div>
-				<div class="comment">
-					<p>User <span> Commento prova</span></p>
-				</div>
-				<div class="comment">
-					<p>User <span> Commento prova</span></p>
+				<div
+					class="comment"
+					v-for="(comment, index) in posts[index].comments"
+					:key="index"
+				>
+					<p>{{comment.username}} <span> {{comment.text}}</span></p>
 				</div>
 			</div>
 			<div class="post-created-at">
@@ -59,6 +53,7 @@
 <script>
 export default {
 	name: "PostComponent",
+	props: ["posts", "index"],
 };
 </script>
 

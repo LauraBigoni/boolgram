@@ -1,6 +1,6 @@
 <template>
 	<div class="left-component">
-		<Stories></Stories>
+		<Stories :stories="stories"></Stories>
 		<Posts></Posts>
 	</div>
 </template>
@@ -12,6 +12,7 @@ import Posts from "@/components/homepage/LeftComponent/posts/Posts";
 export default {
 	name: "LeftComponent",
 	components: { Stories, Posts },
+	props: ["stories"],
 };
 </script>
 

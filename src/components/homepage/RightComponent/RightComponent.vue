@@ -1,7 +1,7 @@
 <template>
 	<div class="right-component">
 		<Profile :user="user"></Profile>
-		<Suggestion></Suggestion>
+		<Suggestion :stories="stories"></Suggestion>
 		<Footer></Footer>
 	</div>
 </template>
@@ -14,7 +14,7 @@ import Suggestion from "@/components/homepage/RightComponent/components/Suggesti
 export default {
 	name: "RightComponent",
 	components: { Profile, Suggestion, Footer },
-	props: ["user"],
+	props: ["user", "stories"],
 };
 </script>
 

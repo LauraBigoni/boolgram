@@ -2,16 +2,17 @@
 	<div class="story">
 		<img
 			class="profile-img"
-			src="https://w0.peakpx.com/wallpaper/331/150/HD-wallpaper-sad-boy-hotaro-art-cartoon-sadboy-dark-hotarooreki-feeling-anime-thumbnail.jpg"
+			:src="stories[index].profile_picture"
 			alt="story image"
 		/>
-		<h4 class="user-nick">Nickname</h4>
+		<h4 class="user-nick">{{ stories[index].profile_name }}</h4>
 	</div>
 </template>
 
 <script>
 export default {
 	name: "StoryComponent",
+	props: ["stories", "index"],
 };
 </script>
 
