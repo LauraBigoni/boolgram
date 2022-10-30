@@ -22,25 +22,53 @@
 			<div class="like-counter">
 				<img
 					class="like-counter-img"
-					src="https://whatifgaming.com/wp-content/uploads/2021/11/Cool-Gon-freecss-anime-PFP.png"
+					:src="posts[index].likes[0].profile_picture"
 					alt="like counter img"
 				/>
-				<p class="user-like">
-					Piace a <span>Ghon20px</span> e <span>altri 4</span>
+				<p class="user-like" v-if="posts[index].likes.length >= 2">
+					Piace a <span>{{ posts[index].likes[0].username }}</span> e
+					<span>altri {{ posts[index].likes.length - 1 }}</span>
+				</p>
+				<p class="user-like" v-if="posts[index].likes.length == 1">
+					Piace a <span>{{ posts[index].likes[0].username }}</span>
+				</p>
+				<p class="user-like" v-if="posts[index].likes.length == 0">
+					Piace a <span>0 Persone</span>
 				</p>
 			</div>
 			<div class="comment-box">
-				<h5>Mostra tutti e 4 commenti</h5>
+				<h5
+					v-if="posts[index].comments.length > 1"
+					@click="showAllComments(posts[index])"
+				>
+					Mostra tutti e {{ posts[index].comments.length }} commenti
+				</h5>
+				<h5
+					v-if="posts[index].comments.length == 1"
+					@click="showAllComments(posts[index])"
+				>
+					Mostra i commenti
+				</h5>
+				<h5
+					v-if="posts[index].comments.length == 0"
+					@click="showAllComments(posts[index])"
+				>
+					Nessun commento
+				</h5>
 				<div
 					class="comment"
-					v-for="(comment, index) in posts[index].comments"
+					v-for="(comment, index) in posts[index].comments.slice(0, this.slice)"
 					:key="index"
 				>
-					<p>{{comment.username}} <span> {{comment.text}}</span></p>
+					<p>
+						{{ comment.username }} <span> {{ comment.text }}</span>
+					</p>
 				</div>
 			</div>
 			<div class="post-created-at">
-				<p class="time">33 Ore fa</p>
+				<p class="time">
+					{{ moment(posts[index].date.date).fromNow() }}
+				</p>
 			</div>
 		</div>
 		<div class="add-comment">
@@ -54,6 +82,24 @@
 export default {
 	name: "PostComponent",
 	props: ["posts", "index"],
+	data() {
+		return {
+			allComments: [],
+			slice: 2,
+			isClicked: false,
+		};
+	},
+	methods: {
+		showAllComments(post) {
+			this.isClicked = !this.isClicked;
+			if (this.isClicked) {
+				this.slice = post.comments.length;
+				post.comments.splice(2, 0);
+			} else this.slice = 2;
+		},
+	},
+	computed: {},
+	mounted() {},
 };
 </script>
 
@@ -95,6 +141,7 @@ export default {
 
 .post-img {
 	width: 100%;
+	height: 400px;
 	object-fit: cover;
 	object-position: center center;
 }
@@ -133,6 +180,7 @@ export default {
 .like-counter {
 	display: flex;
 	align-items: center;
+	padding: 8px 0;
 }
 
 .like-counter p {
@@ -145,9 +193,8 @@ export default {
 }
 
 .like-counter-img {
-	padding: 8px 0;
 	width: 20px;
-	height: auto;
+	height: 20px;
 	border-radius: 50%;
 }
 

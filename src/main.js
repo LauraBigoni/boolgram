@@ -1,5 +1,8 @@
 import Vue from "vue";
 import App from "./App.vue";
+import moment from "moment";
+moment.locale("it");
+Vue.prototype.moment = moment;
 
 /* import the fontawesome core */
 import { library } from "@fortawesome/fontawesome-svg-core";
