@@ -61,6 +61,10 @@ export default {
 
 input {
 	text-align: center;
+	padding: 3px 0;
+	background-color: rgb(247, 247, 247);
+	border: 1px solid rgb(201, 201, 201);
+	border-radius: 4px;
 }
 
 .profile {
