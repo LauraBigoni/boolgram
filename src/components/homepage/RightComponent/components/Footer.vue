@@ -1,12 +1,28 @@
 <template>
-	<footer class="footer"></footer>
+	<footer class="footer">
+		<span class="copyright">&copy; {{ copyrightText }}</span>
+	</footer>
 </template>
 
 <script>
 export default {
 	name: "FooterComponent",
+	data() {
+		return {
+			copyrightText: "2020 INSTAGRAM FROM FACEBOOK",
+		};
+	},
 };
 </script>
 
-<style>
+<style scoped>
+.footer {
+	flex-shrink: 1;
+}
+
+.copyright {
+	font-size: 12px;
+	font-weight: 300;
+	color: rgb(97, 97, 97);
+}
 </style>

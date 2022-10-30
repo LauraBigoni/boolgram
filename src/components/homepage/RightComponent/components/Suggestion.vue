@@ -8,5 +8,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.suggestion {
+	display: flex;
+	flex-grow: 1;
+}
 </style>

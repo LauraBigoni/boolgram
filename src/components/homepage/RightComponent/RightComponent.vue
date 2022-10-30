@@ -1,6 +1,6 @@
 <template>
 	<div class="right-component">
-		<Profile></Profile>
+		<Profile :user="user"></Profile>
 		<Suggestion></Suggestion>
 		<Footer></Footer>
 	</div>
@@ -14,8 +14,13 @@ import Suggestion from "@/components/homepage/RightComponent/components/Suggesti
 export default {
 	name: "RightComponent",
 	components: { Profile, Suggestion, Footer },
+	props: ["user"],
 };
 </script>
 
-<style>
+<style scoped>
+.right-component {
+	display: flex;
+	flex-direction: column;
+}
 </style>

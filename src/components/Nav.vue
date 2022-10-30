@@ -15,7 +15,7 @@
 			<div class="profile">
 				<font-awesome-icon icon="fa-regular fa-heart" size="lg" />
 				<font-awesome-icon icon="fa-solid fa-house" size="lg" />
-				<img class="profile-img" :src="profileImage" alt="profile image" />
+				<img class="profile-img" :src="userImage" alt="profile image" />
 			</div>
 		</div>
 	</nav>
@@ -24,10 +24,10 @@
 <script>
 export default {
 	name: "NavBar",
+	props: ["userImage"],
 	data() {
 		return {
 			logo: require("@/assets/logo.png"),
-			profileImage: require("@/assets/profile.jpg"),
 			searchText: "",
 		};
 	},
@@ -39,19 +39,18 @@ export default {
 	border-bottom: 1px solid rgb(201, 201, 201);
 }
 
-.fa-heart,
-.fa-house {
-	cursor: pointer;
-}
-
 .container {
-	max-width: 1200px;
-	margin: 0 auto;
 	display: flex;
+	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
 	height: 60px;
 	padding: 0 16px;
+}
+
+.fa-heart,
+.fa-house {
+	cursor: pointer;
 }
 
 .logo-img {
@@ -73,9 +72,4 @@ input {
 	gap: 16px;
 }
 
-.profile-img {
-	width: 50px;
-	height: auto;
-	border-radius: 50%;
-}
 </style>
